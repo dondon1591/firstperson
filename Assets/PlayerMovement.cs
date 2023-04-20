@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("移動設定")]
     public float moveSpeed;
+    public float jumpForce;
 
     [Header("按鍵綁定")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -37,11 +38,17 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();     // 只要是物件移動，建議你放到FixedUpdate()        
     }
 
-    // 方法：取得目前玩家按方向鍵上下左右的數值
+    // 方法：取得目前玩家按方向鍵上下左右的數值，控制跳躍行為
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        // 如果按下設定的跳躍按鍵
+        if (Input.GetKey(jumpKey) == true)
+        {
+            Jump(); // 執行跳躍方法
+        }
     }
 
     private void MovePlayer()
@@ -63,5 +70,14 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rbFirstPerson.velocity = new Vector3(limitedVel.x, rbFirstPerson.velocity.y, limitedVel.z);
         }
+    }
+
+    // 方法：跳躍
+    private void Jump()
+    {
+        // 重新設定Y軸速度
+        rbFirstPerson.velocity = new Vector3(rbFirstPerson.velocity.x, 0f, rbFirstPerson.velocity.z);
+        // 由下往上推第一人稱物件，ForceMode.Impulse可以讓推送的模式為一瞬間，會更像跳躍的感覺
+        rbFirstPerson.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 }
