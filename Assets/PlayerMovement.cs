@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("移動設定")]
     public float moveSpeed;
-    public float jumpForce;
+    public float jumpForce;          // 跳躍力道
+    public float jumpCooldown;       // 設定要幾秒後才能向上跳躍
 
     [Header("按鍵綁定")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("基本設定")]
     public Transform PlayerCamera;   // 攝影機
 
+    private bool readyToJump;        // 設定是否可以跳躍
     private float horizontalInput;   // 左右方向按鍵的數值(-1 <= X <= +1)
     private float verticalInput;     // 上下方向按鍵的數值(-1 <= Y <= +1)
 
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rbFirstPerson = GetComponent<Rigidbody>();
         rbFirstPerson.freezeRotation = true;         // 鎖定第一人稱物件剛體旋轉，不讓膠囊體因為碰到物件就亂轉
+        readyToJump = true;
     }
 
     private void Update()
@@ -45,9 +48,11 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // 如果按下設定的跳躍按鍵
-        if (Input.GetKey(jumpKey) == true)
+        if (Input.GetKey(jumpKey) && readyToJump)
         {
-            Jump(); // 執行跳躍方法
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown); // 如果跳躍過後，就會依照設定的限制時間倒數，時間到了才能往上跳躍
         }
     }
 
@@ -79,5 +84,11 @@ public class PlayerMovement : MonoBehaviour
         rbFirstPerson.velocity = new Vector3(rbFirstPerson.velocity.x, 0f, rbFirstPerson.velocity.z);
         // 由下往上推第一人稱物件，ForceMode.Impulse可以讓推送的模式為一瞬間，會更像跳躍的感覺
         rbFirstPerson.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    // 方法：重新設定變數readyToJump為true的方法
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 }
