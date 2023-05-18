@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 642501389}
   - component: {fileID: 642501388}
   - component: {fileID: 642501390}
+  - component: {fileID: 642501391}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -403,6 +404,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   grounded: 0
+--- !u!114 &642501391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642501386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 963194227}
+  attackPoint: {fileID: 949333442}
+  bullet: {fileID: 6969286687209467370, guid: 4a2de1d8d514a8d42a05ec354c0b5262, type: 3}
+  magazineSize: 30
+  bulletsLeft: 30
+  reloadTime: 1
+  recoilForce: 1
+  ammunitionDisplay: {fileID: 1458688720}
+  reloadingDisplay: {fileID: 1438423500}
+  ani: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
   m_Name: 
