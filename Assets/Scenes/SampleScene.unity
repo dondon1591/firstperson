@@ -251,6 +251,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &305823232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305823229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObejct: {fileID: 642501386}
+  PlayerCamera: {fileID: 963194227}
+  attackPoint: {fileID: 0}
+  bullet: {fileID: 0}
+  isGun: 0
+  magazineSize: 0
+  bulletsLeft: 0
+  reloadTime: 0
+  recoilForce: 0
+  ammunitionDisplay: {fileID: 1458688720}
+  reloadingDisplay: {fileID: 1438423500}
 --- !u!1 &381133795
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,18 +472,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 642501386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
+  m_Script: {fileID: 11500000, guid: e93e11b066c107c4fac60833494f18b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCamera: {fileID: 963194227}
-  attackPoint: {fileID: 949333442}
-  bullet: {fileID: 6969286687209467370, guid: 4a2de1d8d514a8d42a05ec354c0b5262, type: 3}
-  magazineSize: 30
-  bulletsLeft: 30
-  reloadTime: 1
-  recoilForce: 1
-  ammunitionDisplay: {fileID: 1458688720}
-  reloadingDisplay: {fileID: 1438423500}
   weaponObjects:
   - {fileID: 305823229}
   - {fileID: 1149245577}
@@ -779,16 +793,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerObejct: {fileID: 0}
   PlayerCamera: {fileID: 963194227}
   attackPoint: {fileID: 949333442}
   bullet: {fileID: 6969286687209467370, guid: 4a2de1d8d514a8d42a05ec354c0b5262, type: 3}
+  isGun: 0
   magazineSize: 30
   bulletsLeft: 30
   reloadTime: 3
   recoilForce: 0
   ammunitionDisplay: {fileID: 1458688720}
   reloadingDisplay: {fileID: 1438423500}
-  weaponObjects: []
 --- !u!1 &1149245577
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,13 +817,14 @@ GameObject:
   - component: {fileID: 1149245579}
   - component: {fileID: 1149245578}
   - component: {fileID: 1149245582}
+  - component: {fileID: 1149245583}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1149245578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -909,6 +925,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1149245583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149245577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a8905b6e0b30541ad6070a79799c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObejct: {fileID: 642501386}
+  PlayerCamera: {fileID: 963194227}
+  attackPoint: {fileID: 949333442}
+  bullet: {fileID: 6969286687209467370, guid: 4a2de1d8d514a8d42a05ec354c0b5262, type: 3}
+  isGun: 1
+  magazineSize: 30
+  bulletsLeft: 30
+  reloadTime: 2
+  recoilForce: 1
+  ammunitionDisplay: {fileID: 1458688720}
+  reloadingDisplay: {fileID: 1438423500}
 --- !u!1001 &1336986962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1301,7 +1340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3207bb4f631679c44bff39f3fbe1143e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
